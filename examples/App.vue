@@ -39,6 +39,7 @@ export default {
 </script>
 
 <style>
+@import 'highlight.js/styles/color-brewer.css';
 body {
   margin: 0;
   padding: 0;
