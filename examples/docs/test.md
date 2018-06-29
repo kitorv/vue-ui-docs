@@ -2,7 +2,7 @@
 
 > Hello World
 
-:::demo # 描述标题
+:::demo ### 描述标题
 
 ```html
 <template>
