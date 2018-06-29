@@ -3,13 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import DemoBlock from './components/demo-block.vue'
 
 Vue.config.productionTip = false
-console.log(router)
-/* eslint-disable no-new */
+Vue.component("demo-block", DemoBlock);
+
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
