@@ -8,9 +8,9 @@
 
 ### [document](https://github.com/kitorv/study-notes/blob/master/vue/VUE-01.md)
 
-## vue-cli3.0 环境搭建
+## vue-cli 3.0 环境配置
 
-### [vue-cli3.0](https://github.com/kitorv/vue-md-doc)
+### [vue.config.js](src/vue.config.js)
 
 ## Overview
 
