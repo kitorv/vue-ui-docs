@@ -18,34 +18,34 @@ npm install -g @vue/cli
 vue ui
 ```
 
-![初始化](site/imges/vue-ui-01.png)
+![初始化](site/images/vue-ui-01.png)
 
 3. 创建项目
 
-![创建项目](site/imges/vue-ui-02.png)
+![创建项目](site/images/vue-ui-02.png)
 
 4. 手动配置
 
-![手动配置](site/imges/vue-ui-03.png)
+![手动配置](site/images/vue-ui-03.png)
 
 5. 项目配置
 
-![项目配置](site/imges/vue-ui-04.png)
+![项目配置](site/images/vue-ui-04.png)
 
 6. 自定义配置
 
-![自定义配置](site/imges/vue-ui-05.png)
+![自定义配置](site/images/vue-ui-05.png)
 
 7. 启动项目
 
-![启动项目](site/imges/vue-ui-06.png)
+![启动项目](site/images/vue-ui-06.png)
 
 8. 项目运行
 
-![项目运行](site/imges/vue-ui-07.png)
+![项目运行](site/images/vue-ui-07.png)
 
 9. 在线访问
 
-![在线访问](site/imges/vue-ui-08.png)
+![在线访问](site/images/vue-ui-08.png)
 
 :::

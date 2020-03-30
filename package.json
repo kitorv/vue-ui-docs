@@ -1,6 +1,6 @@
 {
   "name": "vue-ui-docs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -23,6 +23,11 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
   },
   "eslintConfig": {
     "root": true,
