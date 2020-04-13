@@ -554,3 +554,92 @@ module.exports = {
 6. 浏览器访问
 
 ![代码示例](site/images/vue-snippet-01.png)
+
+## Travis 自动构建
+
+1. `Github` 授权配置 [https://github.com/settings/tokens](https://github.com/settings/tokens) 并且记录 `GITHUB_TOKEN` 的值
+
+![GITHUB_TOKEN](site/images/vue-github-01.png)
+
+2. `NPM` 创建一个 `token` 授权码，记录该授权码
+
+![NPM_TOKEN](site/images/vue-npm-01.png)
+
+3. `githbub` 授权访问 [https://www.travis-ci.org](https://www.travis-ci.org/)
+
+![Travis 开启项目](site/images/vue-travis-01.png)
+
+4. Travis 环境变量设置
+
+| 变量         | 描述                    |
+| :----------- | :---------------------- |
+| GITHUB_TOKEN | Github 生成的授权 Token |
+| NPM_EMAIL    | NPM 注册邮箱            |
+| NPM_TOKEN    | NPM 授权 Token          |
+
+![Travis 环境变量](site/images/vue-travis-02.png)
+
+5. 构建配置文件 `.travis.yml` 具体配置参考 [https://docs.travis-ci.com](https://docs.travis-ci.com)
+
+```yml
+# 编译环境
+language: node_js
+
+# Node 版本
+node_js:
+  - "10"
+
+# 安装依赖
+install:
+  - npm install
+
+# 代码编译
+script:
+  - npm run build
+  - npm run release
+
+# 发布配置
+deploy:
+  # 发布到 gh-pages
+  - provider: pages
+    local_dir: dist
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    on:
+      branch: master
+  # 发布到 npm
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      tags: true
+      branch: master
+```
+
+6. 项目构建 `vue.config.js`
+
+```javascript
+// vue.config.js 部署路径调整
+...
+publicPath: process.env.NODE_ENV !== "production" ? "/" : "/vue-ui-docs",
+...
+```
+
+```javascript
+// site/router/index.js 路由调整
+...
+base: process.env.NODE_ENV !== "production" ? "/" : "/vue-ui-docs",
+...
+```
+
+7. `package.json` 添加 `script` 打包发布指令
+
+```javascript
+...
+"release": "vue-cli-service build --dest lib --target lib src/index.js",
+...
+```
+
+8. 提交代码自动构建
