@@ -496,7 +496,7 @@ module.exports = {
 
 :::
 
-## 事件板顶
+## 时间绑定
 
 :::snippet 绑定 `click` 事件。
 
