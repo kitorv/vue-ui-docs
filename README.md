@@ -78,3 +78,7 @@ module.exports = {
   }
 };
 ```
+
+npm i markdown-it markdown-it-container highlight.js -D
+
+代码解析组件 vue

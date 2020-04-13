@@ -6,8 +6,30 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: () => import("../views/Home.vue")
+    name: "home",
+    component: () => import("../views/Home.vue"),
+    children: [
+      {
+        path: "/",
+        name: "home-start",
+        component: () => import("../docs/start.md")
+      },
+      {
+        path: "/changelog",
+        name: "changelog",
+        component: () => import("../../CHANGELOG.md")
+      },
+      {
+        path: "/start",
+        name: "start",
+        component: () => import("../docs/start.md")
+      },
+      {
+        path: "/component/button",
+        name: "component-button",
+        component: () => import("../../src/button/index.md")
+      }
+    ]
   }
 ];
 
