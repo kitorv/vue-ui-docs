@@ -1,7 +1,6 @@
 {
   "name": "vue-ui-docs",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -31,6 +30,19 @@
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "keywords": [
+    "vue",
+    "components",
+    "markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitorv/vue-ui-docs.git"
+  },
+  "homepage": "https://kitorv.github.io/vue-ui-docs/",
+  "bugs": {
+    "url": "https://github.com/kitorv/vue-ui-docs/issues"
   },
   "eslintConfig": {
     "root": true,

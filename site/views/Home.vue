@@ -7,17 +7,20 @@
       <div class="home--header-title">
         VUE-UI-DOCS
       </div>
+      <div class="home--header-github" @click="handleGitbubClick">
+        <img src="../images/github.svg" />
+      </div>
     </div>
     <div class="home--left">
       <div class="home--left-title">开发指南</div>
       <router-link class="home--left-link" to="/">快速上手</router-link>
       <router-link class="home--left-link" to="/changelog"
-        >更新日志</router-link
-      >
+        >更新日志
+      </router-link>
       <div class="home--left-title">组件</div>
-      <router-link class="home--left-link" to="/component/button"
-        >Button 按钮</router-link
-      >
+      <router-link class="home--left-link" to="/component/button">
+        Button 按钮
+      </router-link>
     </div>
     <div class="home--content">
       <div class="home--content-page">
@@ -33,6 +36,11 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    handleGitbubClick() {
+      window.open("https://github.com/kitorv/vue-ui-docs");
+    }
   }
 };
 </script>
@@ -124,6 +132,26 @@ export default {
 
   &:hover {
     color: #41a259;
+  }
+}
+
+.home--header-github {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  right: 20px;
+  top: 10px;
+  color: #444444;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  > img {
+    height: 100%;
+    width: 100%;
   }
 }
 
