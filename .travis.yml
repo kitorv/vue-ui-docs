@@ -19,7 +19,7 @@ deploy:
   # 发布到 gh-pages
   - provider: pages
     local_dir: dist
-    skip_cleanup: true
+    cleanup: true
     github_token: $GITHUB_TOKEN
     keep_history: true
     on:
@@ -28,7 +28,7 @@ deploy:
   - provider: npm
     email: $NPM_EMAIL
     api_key: $NPM_TOKEN
-    skip_cleanup: true
+    cleanup: true
     on:
       tags: true
       branch: master
