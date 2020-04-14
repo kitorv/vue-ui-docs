@@ -5,15 +5,15 @@ vue 2.x 组件库自动解析 Markdown 示例，自动构建发布到 `github-pa
 ## 实现目标
 
 - 自动发布
-  - [ ] 使用 `Travis` 自动构建和发布代码
-  - [ ] 提交代码到 `master` 分支，自动发布到 `github-pages`
-  - [ ] 打标签 `tag` 到 `master` 分支，自动发布到 `npm`
+  - [x] 使用 `Travis` 自动构建和发布代码
+  - [x] 提交代码到 `master` 分支，自动发布到 `github-pages`
+  - [x] 打标签 `tag` 到 `master` 分支，自动发布到 `npm`
 - 文档解析
-  - [ ] `.md` 文件通过编写 `webpack` 加载器解析为 `vue` 代码
-  - [ ] `Markdown` 文件解析其中包含 `snippet::: {code} :::` 格式为局部组件
+  - [x] `.md` 文件通过编写 `webpack` 加载器解析为 `vue` 代码
+  - [x] `Markdown` 文件解析其中包含 `snippet::: {code} :::` 格式为局部组件
 - 项目构建
-  - [ ] `github-pages` 在线访问 (https://kitorv.github.io/vue-ui-docs)[https://kitorv.github.io/vue-ui-docs]
-  - [ ] `npm` 包安装 (https://www.npmjs.com/package/vue-ui-docs)[https://www.npmjs.com/package/vue-ui-docs]
+  - [x] `github-pages` 在线访问 (https://kitorv.github.io/vue-ui-docs)[https://kitorv.github.io/vue-ui-docs]
+  - [x] `npm` 包安装 (https://www.npmjs.com/package/vue-ui-docs)[https://www.npmjs.com/package/vue-ui-docs]
 
 代码示例格式：
 
