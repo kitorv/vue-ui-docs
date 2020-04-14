@@ -1,5 +1,40 @@
 # VUE-UI-DOCS
 
+vue 2.x 组件库自动解析 Markdown 示例，自动构建发布到 `github-pages` 和 `npm`
+
+## 实现目标
+
+- 自动发布
+  - [ ] 使用 `Travis` 自动构建和发布代码
+  - [ ] 提交代码到 `master` 分支，自动发布到 `github-pages`
+  - [ ] 打标签 `tag` 到 `master` 分支，自动发布到 `npm`
+- 文档解析
+  - [ ] `.md` 文件通过编写 `webpack` 加载器解析为 `vue` 代码
+  - [ ] `Markdown` 文件解析其中包含 `snippet::: {code} :::` 格式为局部组件
+- 项目构建
+  - [ ] `github-pages` 在线访问 (https://kitorv.github.io/vue-ui-docs)[https://kitorv.github.io/vue-ui-docs]
+  - [ ] `npm` 包安装 (https://www.npmjs.com/package/vue-ui-docs)[https://www.npmjs.com/package/vue-ui-docs]
+
+代码示例格式：
+
+````markdown
+:::snippet 通过 `v-button` 标签初始化按钮。
+
+```html
+<template>
+  <div>
+    <v-button>Default</v-button>
+  </div>
+</template>
+```
+
+:::
+````
+
+解析示例渲染：
+
+![代码解析示例](site/images/vue-snippet-02.png)
+
 ## 创建项目
 
 1. 全局安装 `Vue CLI` 更多内容查看[官方文档](https://cli.vuejs.org/zh/guide/installation.html)
@@ -496,7 +531,7 @@ module.exports = {
 
 :::
 
-## 时间绑定
+## 事件绑定
 
 :::snippet 绑定 `click` 事件。
 
@@ -642,4 +677,6 @@ base: process.env.NODE_ENV !== "production" ? "/" : "/vue-ui-docs",
 ...
 ```
 
-8. 提交代码自动构建
+8. Git 新增标签 `v1.0.0` 提交推送代码，触发自动构建
+
+![Travis 自动构建](site/images/vue-travis-03.png)
