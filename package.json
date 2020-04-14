@@ -7,6 +7,7 @@
     "release": "vue-cli-service build --dest lib --target lib src/index.js",
     "lint": "vue-cli-service lint"
   },
+  "main": "lib/vue-ui-docs.common.js",
   "dependencies": {
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
