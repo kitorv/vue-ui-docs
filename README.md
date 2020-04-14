@@ -12,8 +12,8 @@ vue 2.x 组件库自动解析 Markdown 示例，自动构建发布到 `github-pa
   - [x] `.md` 文件通过编写 `webpack` 加载器解析为 `vue` 代码
   - [x] `Markdown` 文件解析其中包含 `snippet::: {code} :::` 格式为局部组件
 - 项目构建
-  - [x] `github-pages` 在线访问 (https://kitorv.github.io/vue-ui-docs)[https://kitorv.github.io/vue-ui-docs]
-  - [x] `npm` 包安装 (https://www.npmjs.com/package/vue-ui-docs)[https://www.npmjs.com/package/vue-ui-docs]
+  - [x] `github-pages` 在线访问 [https://kitorv.github.io/vue-ui-docs](https://kitorv.github.io/vue-ui-docs)
+  - [x] `npm` 包安装 [https://www.npmjs.com/package/vue-ui-docs](https://www.npmjs.com/package/vue-ui-docs)
 
 代码示例格式：
 
