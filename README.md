@@ -2,6 +2,8 @@
 
 vue 2.x 组件库自动解析 Markdown 示例，自动构建发布到 `github-pages` 和 `npm`
 
+[0.x 代码](https://github.com/kitorv/vue-ui-docs/tree/v0.x)
+
 ## 实现目标
 
 - 自动发布
@@ -680,3 +682,11 @@ base: process.env.NODE_ENV !== "production" ? "/" : "/vue-ui-docs",
 8. Git 新增标签 `v1.0.0` 提交推送代码，触发自动构建
 
 ![Travis 自动构建](site/images/vue-travis-03.png)
+
+9. `Github-Pages` 访问 [https://kitorv.github.io/vue-ui-docs](https://kitorv.github.io/vue-ui-docs)
+
+![Github 示例](site/images/vue-github-02.png)
+
+10. `NPM` 安装包 [https://www.npmjs.com/package/vue-ui-docs](https://www.npmjs.com/package/vue-ui-docs)
+
+![NPM 安装包](site/images/vue-npm-02.png)
