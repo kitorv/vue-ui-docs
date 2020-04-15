@@ -1,6 +1,6 @@
 # VUE-UI-DOCS
 
-vue 2.x 组件库自动解析 Markdown 示例，自动构建发布到 `github-pages` 和 `npm`
+vue 2.x 组件库自动解析 `Markdown` 示例，自动构建发布到 `github-pages` 和 `npm`
 
 [旧版本代码](https://github.com/kitorv/vue-ui-docs/tree/v0.x)
 
