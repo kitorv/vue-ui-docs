@@ -46,8 +46,38 @@
     methods: {
       handleButtonClick() {
         alert(1);
-      }
-    }
+      },
+    },
+  };
+</script>
+```
+
+:::
+
+## JSX 语法支持
+
+:::snippet 示例代码支持`jsx`渲染。
+
+```html
+<script>
+  export default {
+    render() {
+      return (
+        <div>
+          <v-button
+            text="Default"
+            onClick={() => {
+              this.handleButtonClick();
+            }}
+          ></v-button>
+        </div>
+      );
+    },
+    methods: {
+      handleButtonClick() {
+        alert(1);
+      },
+    },
   };
 </script>
 ```

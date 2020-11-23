@@ -45,10 +45,6 @@ module.exports = function(source) {
         // 获取vue组件示例的代码
         const nextIndex = tokens[index + 1];
         let content = nextIndex.type === "fence" ? nextIndex.content : "";
-        if (!/^<template>/.test(content)) {
-          content = `<template><div>${content}</div></template>`;
-        }
-
         // 将content解析为vue组件基本属性对象;
         let { template, script, styles } = parse({
           source: content,
@@ -57,10 +53,15 @@ module.exports = function(source) {
         });
         styleCodeList = styleCodeList.concat(styles);
         // 将template的转为render函数
-        const { code } = compileTemplate({
-          source: template.content,
-          compiler: VueTemplateComplier
-        });
+        let templateCodeRender = "";
+        if (template && template.content) {
+          const { code } = compileTemplate({
+            source: template.content,
+            compiler: VueTemplateComplier
+          });
+          templateCodeRender = code;
+        }
+
         // 获取script的代码
         script = script ? script.content : "";
         if (script) {
@@ -74,12 +75,12 @@ module.exports = function(source) {
         const name = `vc-snippent-${componentCodeList.length}`;
         // 渲染组件代码添加到数据集合
         componentCodeList.push(`"${name}":(function () {
-          ${code}
+          ${templateCodeRender}
           ${script}
            return {
              ...exportJavaScript,
-             render,
-             staticRenderFns
+            ${templateCodeRender ? "render," : ""} 
+            ${templateCodeRender ? "staticRenderFns," : ""}   
           }
         })()`);
         // 将需要渲染的示例用vc-snippet组件包裹替换插槽显示示例效果
