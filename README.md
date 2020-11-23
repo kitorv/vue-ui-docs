@@ -108,9 +108,9 @@ vue ui
 module.exports = {
   pages: {
     index: {
-      entry: "site/main.js"
-    }
-  }
+      entry: "site/main.js",
+    },
+  },
 };
 ```
 
@@ -123,7 +123,7 @@ module.exports = {
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
 };
 </script>
 ```
@@ -149,13 +149,13 @@ export default {
   export default {
     name: "VButton",
     props: {
-      text: String
+      text: String,
     },
     methods: {
       handleClick(event) {
         this.$emit("click", event);
-      }
-    }
+      },
+    },
   };
 </script>
 
@@ -195,7 +195,7 @@ export default {
 ```javascript
 import Button from "./src/button";
 
-Button.install = Vue => {
+Button.install = (Vue) => {
   Vue.component(Button.name, Button);
 };
 
@@ -209,14 +209,14 @@ import Button from "./button/index.js";
 
 const components = [Button];
 
-const install = Vue => {
-  components.forEach(component => {
+const install = (Vue) => {
+  components.forEach((component) => {
     Vue.use(component);
   });
 };
 
 export default {
-  install
+  install,
 };
 ```
 
@@ -258,7 +258,7 @@ Vue.use(VueUIDocs);
   export default {
     data() {
       return {
-        showCode: false
+        showCode: false,
       };
     },
     computed: {
@@ -266,8 +266,8 @@ Vue.use(VueUIDocs);
         return this.showCode
           ? "https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
           : "https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg";
-      }
-    }
+      },
+    },
   };
 </script>
 
@@ -378,7 +378,7 @@ module.exports = function(source) {
       return `<pre class="hljs"><code>${markdownIt.utils.escapeHtml(
         str
       )}</code></pre>`;
-    }
+    },
   });
   // 解析【:::tip:::】
   markdownIt.use(MarkdownItContainer, "tip");
@@ -408,13 +408,13 @@ module.exports = function(source) {
         let { template, script, styles } = parse({
           source: content,
           compiler: VueTemplateComplier,
-          needMap: false
+          needMap: false,
         });
         styleCodeList = styleCodeList.concat(styles);
         // 将template的转为render函数
         const { code } = compileTemplate({
           source: template.content,
-          compiler: VueTemplateComplier
+          compiler: VueTemplateComplier,
         });
         // 获取script的代码
         script = script ? script.content : "";
@@ -445,7 +445,7 @@ module.exports = function(source) {
       }
       return `    </div>
                 </vc-snippet> `;
-    }
+    },
   });
   // 将所有转换好的代码字符串拼接成vue单组件template、script、style格式
   return `
@@ -464,7 +464,7 @@ module.exports = function(source) {
          }
        </script>
        <style lang='scss'>
-         ${Array.from(styleCodeList, m => m.content).join("\n")}
+         ${Array.from(styleCodeList, (m) => m.content).join("\n")}
        </style>`;
 };
 ```
@@ -476,10 +476,10 @@ module.exports = {
   pages: {
     index: {
       // 入口文件
-      entry: "site/main.js"
-    }
+      entry: "site/main.js",
+    },
   },
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     // 解析Markdown文件转成vue组件
     config.module
       .rule("md")
@@ -488,14 +488,14 @@ module.exports = {
       .loader("vue-loader")
       .options({
         compilerOptions: {
-          preserveWhitespace: false
-        }
+          preserveWhitespace: false,
+        },
       })
       .end()
       .use("markdown-loader")
       .loader(require("path").resolve(__dirname, "./build/markdown-loader.js"))
       .end();
-  }
+  },
 };
 ```
 
@@ -550,8 +550,8 @@ module.exports = {
     methods: {
       handleButtonClick() {
         alert(1);
-      }
-    }
+      },
+    },
   };
 </script>
 ```
