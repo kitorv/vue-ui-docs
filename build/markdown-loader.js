@@ -2,28 +2,36 @@ const MarkdownIt = require("markdown-it");
 const MarkdownItContainer = require("markdown-it-container");
 const VueTemplateComplier = require("vue-template-compiler");
 const hljs = require("highlight.js");
+const hash = require("hash-sum");
 const { parse, compileTemplate } = require("@vue/component-compiler-utils");
 
 module.exports = function(source) {
   // 需要解析成vue代码块集合
   const componentCodeList = [];
   let styleCodeList = [];
+  const delimiterCodeList = [];
   const globalScript = [];
   // 初始还MarkdownIt用于转换md文件为html
   const markdownIt = MarkdownIt({
     html: true,
     xhtmlOut: true,
     // 将markdown中的代码块用hljs高亮显示
-    highlight: function(str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        return `<pre class="hljs"><code>${
-          hljs.highlight(lang, str, true).value
-        }</code></pre>`;
+    highlight: function(code, language) {
+      let codeHtml;
+      if (language && hljs.getLanguage(language)) {
+        codeHtml = hljs.highlight(code, { language, ignoreIllegals: true }).value;
+      } else {
+        codeHtml = markdownIt.utils.escapeHtml(code);
       }
-      return `<pre class="hljs"><code>${markdownIt.utils.escapeHtml(
-        str
-      )}</code></pre>`;
-    }
+      // 替换vue的变量分隔符 {{  }} 阻止二次变量编译错误
+      const delimiterRegex = /\{\{.*?\}\}/g;
+      codeHtml = codeHtml.replace(delimiterRegex, (value) => {
+        const code = `data_${hash(value)}`;
+        delimiterCodeList.push(`${code}:"${value}"`);
+        return `{{${code}}}`;
+      });
+      return `<pre class="hljs"><code>${codeHtml}</code></pre>`;
+    },
   });
   // 解析【:::tip:::】
   markdownIt.use(MarkdownItContainer, "tip");
@@ -49,7 +57,7 @@ module.exports = function(source) {
         let { template, script, styles } = parse({
           source: content,
           compiler: VueTemplateComplier,
-          needMap: false
+          needMap: false,
         });
         styleCodeList = styleCodeList.concat(styles);
         // 将template的转为render函数
@@ -57,7 +65,7 @@ module.exports = function(source) {
         if (template && template.content) {
           const { code } = compileTemplate({
             source: template.content,
-            compiler: VueTemplateComplier
+            compiler: VueTemplateComplier,
           });
           templateCodeRender = code;
         }
@@ -91,7 +99,7 @@ module.exports = function(source) {
       }
       return `    </div>
                 </vc-snippet> `;
-    }
+    },
   });
   // 将所有转换好的代码字符串拼接成vue单组件template、script、style格式
   return `
@@ -106,10 +114,13 @@ module.exports = function(source) {
            name: 'vc-component-doc',
            components: {
             ${componentCodeList.join(",")}
+           },
+           data(){
+            return {${delimiterCodeList.join(",")}}
            }
          }
        </script>
        <style lang='scss'>
-         ${Array.from(styleCodeList, m => m.content).join("\n")}
+         ${Array.from(styleCodeList, (m) => m.content).join("\n")}
        </style>`;
 };

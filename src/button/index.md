@@ -37,12 +37,15 @@
 ```html
 <template>
   <div>
-    <v-button text="Default" @click="handleButtonClick"></v-button>
+    <v-button @click="handleButtonClick">{{text}}</v-button>
   </div>
 </template>
 
 <script>
   export default {
+    data() {
+      return { text: "Default" };
+    },
     methods: {
       handleButtonClick() {
         alert(1);

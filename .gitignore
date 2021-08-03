@@ -1,5 +1,3 @@
 node_modules
 dist
 lib
-package-lock
-package-lock.json

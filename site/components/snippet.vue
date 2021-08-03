@@ -96,7 +96,7 @@ export default {
   box-sizing: border-box;
   border-top: 1px solid #ebedf0;
 
-  /deep/ {
+  ::v-deep {
     code {
       background: #f9f9f9;
       font-family: Consolas, Menlo, Courier, monospace;
